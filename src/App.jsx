@@ -42,10 +42,9 @@ function App() {
     };
 
   return (
-    <div className="quiz">
+    <div className="quiz" >
       <h1 className="heading">Welcome to Quiz-Game</h1>
-      <div className="questions">
-        
+      
         {showScore ? (
           <h2 className="score"> 
             You got {score} / {quizData.length} !!
@@ -68,7 +67,7 @@ function App() {
                 {option}
               </button>
             ))}
-            {options && <p>{correct ? "Good job!" : "Sorry"}</p>}
+            {options && <p>{correct ? "Good job! 😃" : "Sorry! 😪"}</p>}
             <button onClick={handlenextQuestion} disabled={!options}>
               Next
             </button>
