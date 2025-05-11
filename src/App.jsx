@@ -3,6 +3,8 @@ import quizData from "./quizData";
 import { useState } from "react";
 import React from "react";
 
+
+// realised that react line needs to be there for my code to run?
 // useState because I need these to show questions, score, answer, next question
 function App() {
   const [options, setOptions] = useState("");
