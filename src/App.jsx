@@ -3,7 +3,6 @@ import quizData from "./quizData";
 import { useState } from "react";
 import React from "react";
 
-
 // realised that react line needs to be there for my code to run?
 // useState because I need these to show questions, score, answer, next question
 function App() {
@@ -14,13 +13,13 @@ function App() {
   const [score, setScore] = useState(0);
 
   // choosing one question
-  function handleclickOption  (option) {
+  function handleclickOption(option) {
     setOptions(option);
     const isCorrect = option === quizData[currentQuestion].answer;
     setCorrect(isCorrect);
     if (isCorrect) setScore(score + 1);
-  };
-// next question after choosing an answer, whether its right or wrong
+  }
+  // next question after choosing an answer, whether its right or wrong
   function handlenextQuestion() {
     const next = currentQuestion + 1;
 
@@ -33,47 +32,45 @@ function App() {
     }
   }
   // to take the game back to first question
-  function handleplayAgain() {    
-      setScore(0);
+  function handleplayAgain() {
+    setScore(0);
     setcurrentQuestion(0);
     setOptions("");
     setCorrect(null);
     setShowScore(false);
-    };
+  }
 
   return (
-    <div className="quiz" >
+    <div className="quiz">
       <h1 className="heading">Welcome to Quiz-Game</h1>
-      
-        {showScore ? (
-          <h2 className="score"> 
-            You got {score} / {quizData.length} !!
-            <button className="btn"
-             onClick={handleplayAgain}>
-              Play again
-              </button>
-          </h2>
-        ) : ( 
-          <div className="qtn">
+
+      {showScore ? (
+        <h2 className="score">
+          You got {score} / {quizData.length} !!
+          <button className="btn" onClick={handleplayAgain}>
+            Play again
+          </button>
+        </h2>
+      ) : (
+        <div className="qtn">
           {/* showing questions */}
-            <h2>{quizData[currentQuestion].question}</h2>
-{/* showing options i  button form that is clickable*/}
-            {quizData[currentQuestion].options.map((option, index) => (
-              <button
-                key={index}
-                className="btn"
-                onClick={() => handleclickOption(option)}
-              >
-                {option}
-              </button>
-            ))}
-            {options && <p>{correct ? "Good job! 😃" : "Sorry! 😪"}</p>}
-            <button onClick={handlenextQuestion} disabled={!options}>
-              Next
+          <h2>{quizData[currentQuestion].question}</h2>
+          {/* showing options i  button form that is clickable*/}
+          {quizData[currentQuestion].options.map((option, index) => (
+            <button
+              key={index}
+              className="btn"
+              onClick={() => handleclickOption(option)}
+            >
+              {option}
             </button>
-          </div>
-        )}
-      </div>
+          ))}
+          {options && <p>{correct ? "Good job! 😃" : "Sorry! 😪"}</p>}
+          <button onClick={handlenextQuestion} disabled={!options}>
+            Next
+          </button>
+        </div>
+      )}
     </div>
   );
 }
