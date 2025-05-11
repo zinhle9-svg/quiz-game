@@ -34,8 +34,8 @@ function App() {
       <h1 className="heading">Welcome to Quiz-Game</h1>
       <div className="questions">
         {showScore ? (
-          <h2>
-            {score} / {quizData.length}
+          <h2> 
+            You got {score} / {quizData.length} !!
           </h2>
         ) : (
           <>
