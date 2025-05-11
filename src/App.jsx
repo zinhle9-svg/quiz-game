@@ -7,7 +7,7 @@ import { useState } from 'react';
 function App() {
 const [options, setOptions] = useState("");
 const [Correct, setCorrect] = useState("null");
-const [ Questions, setQuestions] = useState(0);
+const [ currentQuestion, setcurrentQuestion] = useState(0);
 const handleclickOption = (option) => {
   setOptions(option);
   setCorrect(option === quizData[Questions].answer
@@ -25,7 +25,7 @@ return(
      <button onClick={() => handleclickOption(option)}>{option}</button>
     </li>)))
   }
-  {setOptions[Questions] && (
+  {setOptions[currentQuestion] && (
 <p>
 {Correct ? "Good job!" : "Sorry"}</p>
   )}
@@ -36,7 +36,7 @@ return(
      <button className="btn" onClick={() => handleclickOption(option)}>{option}</button>
     </li>)))
   }
-  {setOptions[Questions] && (
+  {setOptions[currentQuestion] && (
 <p>
 {Correct ? "Good job!" : "Sorry"}</p>
   )}
