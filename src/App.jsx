@@ -1,60 +1,62 @@
-
-import './App.css';
-import quizData from './quizData';
-import { useState } from 'react';
-
+import "./App.css";
+import quizData from "./quizData";
+import { useState } from "react";
+import React from "react";
 
 function App() {
-const [options, setOptions] = useState("");
-const [Correct, setCorrect] = useState("null");
-const [ currentQuestion, setcurrentQuestion] = useState(0);
-const handleclickOption = (option) => {
-  setOptions(option);
-  setCorrect(option === quizData[Questions].answer
-  );
-}
+  const [options, setOptions] = useState("");
+  const [correct, setCorrect] = useState(null);
+  const [currentQuestion, setcurrentQuestion] = useState(0);
+  const [showScore, setShowScore] = useState(false);
+  const [score, setScore] = useState(0);
 
-return(
-  <>
-  <h1 className="heading">Welcome to Quiz-Game</h1>
-    <div className="questions">
- <h2>{quizData[0].question}</h2>
+  const handleclickOption = (option) => {
+    setOptions(option);
+    const isCorrect = option === quizData[currentQuestion].answer;
+    setCorrect(isCorrect);
+    if (isCorrect) setScore(score + 1);
+  };
 
-  {quizData[0].options.map((option, index) => (
-    (<li>
-     <button onClick={() => handleclickOption(option)}>{option}</button>
-    </li>)))
+  function handlenextQuestion() {
+    const next = currentQuestion + 1;
+
+    if (next < quizData.length) {
+      setcurrentQuestion(next);
+      setOptions("");
+      setCorrect(null);
+    } else {
+      setShowScore(true);
+    }
   }
-  {setOptions[currentQuestion] && (
-<p>
-{Correct ? "Good job!" : "Sorry"}</p>
-  )}
-<h2>{quizData[1].question}</h2>
 
-  {quizData[1].options.map((option, index) => (
-    (<li>
-     <button className="btn" onClick={() => handleclickOption(option)}>{option}</button>
-    </li>)))
-  }
-  {setOptions[currentQuestion] && (
-<p>
-{Correct ? "Good job!" : "Sorry"}</p>
-  )}
+  return (
+    <>
+      <h1 className="heading">Welcome to Quiz-Game</h1>
+      <div className="questions">
+        {showScore ? (
+          <h2>
+            {score} / {quizData.length}
+          </h2>
+        ) : (
+          <>
+            <h2>{quizData[currentQuestion].question}</h2>
 
-    </div>
- 
-    {/* <div className="questions">
-      <h2>{quizData[1].question}</h2>
-    </div>
-    <div className="questions">  
-        <h2 >{quizData[2].question}</h2>
-    </div>
-     <div className="questions">  
-        <h2>{quizData[3].question}</h2>
-    </div>
-     <div className="questions">  
-        <h2>{quizData[4].question}</h2>
-    // </div> */}
+            {quizData[currentQuestion].options.map((option, index) => (
+              <button
+                key={index}
+                className="btn"
+                onClick={() => handleclickOption(option)}
+              >
+                {option}
+              </button>
+            ))}
+            {options && <p>{correct ? "Good job!" : "Sorry"}</p>}
+            <button onClick={handlenextQuestion} disabled={!options}>
+              Next
+            </button>
+          </>
+        )}
+      </div>
     </>
   );
 }

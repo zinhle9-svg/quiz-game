@@ -1,1 +1,5 @@
-
+.btn {
+ flex-direction: column;
+ gap: 5px;
+ display: flex;
+}

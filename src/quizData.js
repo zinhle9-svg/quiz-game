@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 
 
 
@@ -15,19 +15,19 @@ const quizData = [
     answer: "Gauteng",
   },
    {
-    question: "What is my current province?",
-    options: ["Gauteng", "Mpumalanga", "Eastern Cape", "KZN"],
-    answer: "Gauteng",
+    question: "What is 3 + 3?",
+    options: ["9", "6", "5", "1"],
+    answer: "6",
   },
    {
-    question: "What is my current province?",
-    options: ["Gauteng", "Mpumalanga", "Eastern Cape", "KZN"],
-    answer: "Gauteng",
+    question: "Which season are we on?",
+    options: ["Winter", "Summer", "Autumn", "Spring"],
+    answer: "Autumn",
   },
    {
-    question: "What is my current province?",
-    options: ["Gauteng", "Mpumalanga", "Eastern Cape", "KZN"],
-    answer: "Gauteng",
+    question: "What is not a programming language here?",
+    options: ["String", "JS", "Python", "Java"],
+    answer: "String",
   }
 ];
 
