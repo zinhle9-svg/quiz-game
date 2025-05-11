@@ -42,7 +42,7 @@ function App() {
     };
 
   return (
-    <>
+    <div className="quiz">
       <h1 className="heading">Welcome to Quiz-Game</h1>
       <div className="questions">
         
@@ -55,7 +55,7 @@ function App() {
               </button>
           </h2>
         ) : ( 
-          <>
+          <div className="qtn">
           {/* showing questions */}
             <h2>{quizData[currentQuestion].question}</h2>
 {/* showing options i  button form that is clickable*/}
@@ -72,10 +72,10 @@ function App() {
             <button onClick={handlenextQuestion} disabled={!options}>
               Next
             </button>
-          </>
+          </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
 
