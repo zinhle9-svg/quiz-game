@@ -13,24 +13,23 @@ function App() {
   const [score, setScore] = useState(0);
 
   // choosing one question
-  function handleclickOption(option) {
-    setOptions(option);
-    const isCorrect = option === quizData[currentQuestion].answer;
-    setCorrect(isCorrect);
-    if (isCorrect) setScore(score + 1);
-  }
-  // next question after choosing an answer, whether its right or wrong
-  function handlenextQuestion() {
-    const next = currentQuestion + 1;
+ function handleclickOption(option) {
+  const isCorrect = option === quizData[currentQuestion].answer;
 
-    if (next < quizData.length) {
-      setcurrentQuestion(next);
-      setOptions("");
-      setCorrect(null);
-    } else {
-      setShowScore(true);
-    }
+  if (isCorrect) {
+    setScore((prevScore) => prevScore + 1);
   }
+  console.log(score);
+  // next question after choosing an answer, whether its right or wrong
+
+  const next = currentQuestion + 1;
+
+  if (next < quizData.length) {
+    setcurrentQuestion(next);
+  } else {
+    setShowScore(true);
+  }
+}
   // to take the game back to first question
   function handleplayAgain() {
     setScore(0);
@@ -65,10 +64,10 @@ function App() {
               {option}
             </button>
           ))}
-          {options && <p>{correct ? "Good job! 😃" : "Sorry! 😪"}</p>}
-          <button onClick={handlenextQuestion} disabled={!options}>
+          {/* {options && <p>{correct ? "Good job! 😃" : "Sorry! 😪"}</p>}
+          <button onClick={handleclickOption} disabled={!options}>
             Next
-          </button>
+          </button> */}
         </div>
       )}
     </div>
