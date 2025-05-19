@@ -64,10 +64,8 @@ function App() {
               {option}
             </button>
           ))}
-          {/* {options && <p>{correct ? "Good job! 😃" : "Sorry! 😪"}</p>}
-          <button onClick={handleclickOption} disabled={!options}>
-            Next
-          </button> */}
+          {options && <p>{correct ? "Good job! 😃" : "Sorry! 😪"}</p>}
+        
         </div>
       )}
     </div>
